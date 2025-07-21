@@ -9,10 +9,21 @@ use App\Models\Post;
 use App\Models\Status;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 
 
-class PostController
+class PostController extends Controller
 {
+      public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+
+        // Sử dụng Auth::check() thay cho auth()->check()
+        if (Auth::check()) {
+            $this->authorizeResource(Category::class, 'category');
+        }
+    }
     /**
      * Display a listing of the resource.
      */

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Middleware\ForceLogout;
-
+use App\Http\Controllers\RolePermissionController;
 
 
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
@@ -17,7 +17,7 @@ Route::post('/register', [UserController::class, 'register'])->name('register.at
 Route::get('/', [CategoryController::class, 'index'])->name('category.index');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middleware(ForceLogout::class);
 
-
+Route::get('/setup-rbac', [RolePermissionController::class, 'setupRolesPermissions'])->name('setup.rbac');
 Route::resource('categories', CategoryController::class);
 Route::resource('categories.posts', PostController::class);
 Route::resource('categories.posts.reviews', ReviewController::class);

@@ -2,22 +2,21 @@
 
 namespace App\Policies;
 
-use App\Models\Category;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
+use App\Models\Category;
 
 class CategoryPolicy
 {
     /**
-     * Determine whether the user can view any models.
+     * Xem danh sách tất cả category
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return true; // Mọi người dùng đều được xem
     }
 
     /**
-     * Determine whether the user can view the model.
+     * Xem chi tiết một category cụ thể
      */
     public function view(User $user, Category $category): bool
     {
@@ -25,39 +24,39 @@ class CategoryPolicy
     }
 
     /**
-     * Determine whether the user can create models.
+     * Tạo mới category - cho phép admin hoặc user
      */
     public function create(User $user): bool
     {
-        return $user->isAdmin();
+        return $user->hasRole('admin') || $user->hasRole('user');
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Cập nhật category - chỉ cho phép admin
      */
     public function update(User $user, Category $category): bool
     {
-        return $user->isAdmin();
+        return $user->hasRole('admin');
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * Xoá category - chỉ cho phép admin
      */
     public function delete(User $user, Category $category): bool
     {
-        return $user->isAdmin();
+        return $user->hasRole('admin');
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * Khôi phục lại category đã xoá
      */
     public function restore(User $user, Category $category): bool
     {
-        return false;
+        return false; // Không ai được phép
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * Xoá vĩnh viễn category
      */
     public function forceDelete(User $user, Category $category): bool
     {

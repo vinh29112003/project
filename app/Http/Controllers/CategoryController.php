@@ -5,9 +5,28 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Policies\CategoryPolicy;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 
-class CategoryController
+
+
+class CategoryController extends Controller
 {
+
+    use AuthorizesRequests;
+    public function __construct()
+    
+    {
+        $this->middleware('permission:edit post');
+        $this->middleware('auth')->except(['index', 'show']);
+
+        // Sử dụng Auth::check() thay cho auth()->check()
+        if (Auth::check()) {
+            $this->authorizeResource(Category::class, 'category');
+        }
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -67,10 +86,11 @@ class CategoryController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Category::findOrFail($id);
+
         $category->delete();
-        return redirect()->route('categories.index')->with('success', 'Danh mục đã xoá thành công.');
+        return redirect()->route('categories.index')
+            ->with('success', 'Danh mục đã xoá thành công.');
     }
 }

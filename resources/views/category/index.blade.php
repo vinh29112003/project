@@ -81,29 +81,37 @@
                         <td>{{ $category->created_at->format('d/m/Y') }}</td>
                         <td>
                             {{-- Xem bài viết --}}
-                            <form action="{{ route('categories.posts.index', $category->id) }}" method="GET" class="d-inline">
-                                <button type="submit" class="btn btn-outline-info btn-sm mb-1">
-                                    <i class="bi bi-eye"></i> Xem bài viết
-                                </button>
-                            </form>
+                            
+                                <form action="{{ route('categories.posts.index', $category->id) }}" method="GET"
+                                    class="d-inline">
+                                    <button type="submit" class="btn btn-outline-info btn-sm mb-1">
+                                        <i class="bi bi-eye"></i> Xem bài viết
+                                    </button>
+                                </form>
+            
 
                             {{-- Sửa --}}
-                            <form action="{{ route('categories.edit', $category->id) }}" method="GET" class="d-inline">
-                                <button type="submit" class="btn btn-warning btn-sm mb-1">
-                                    <i class="bi bi-pencil-square"></i> Sửa
-                                </button>
-                            </form>
+                            @can('update', $category)
+                                <form action="{{ route('categories.edit', $category->id) }}" method="GET" class="d-inline">
+                                    <button type="submit" class="btn btn-warning btn-sm mb-1">
+                                        <i class="bi bi-pencil-square"></i> Sửa
+                                    </button>
+                                </form>
+                            @endcan
 
                             {{-- Xoá --}}
-                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline"
-                                onsubmit="return confirm('Bạn có chắc chắn muốn xoá danh mục này?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">
-                                    <i class="bi bi-trash"></i> Xoá
-                                </button>
-                            </form>
+                            @can('delete', $category)
+                                <form action="{{ route('categories.destroy', $category) }}" method="POST" class="d-inline"
+                                    onsubmit="return confirm('Bạn có chắc chắn muốn xoá danh mục này?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-trash"></i> Xoá
+                                    </button>
+                                </form>
+                            @endcan
                         </td>
+
                     </tr>
                 @endforeach
             </tbody>

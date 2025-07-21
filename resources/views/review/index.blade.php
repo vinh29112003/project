@@ -55,12 +55,17 @@
                         <td>{{ $review->created_at->format('d/m/Y H:i') }}</td>
                         <td>
                             {{-- Sửa --}}
+                            @can('update', $review)
                             <a href="{{ route('categories.posts.reviews.edit', [$category->id, $post->id, $review->id]) }}"
                                class="btn btn-sm btn-warning me-1">
                                 Sửa
                             </a>
+                            @endcan
+
+                            {{-- Xem --}}
 
                             {{-- Xoá --}}
+                            @can('delete', $review)
                             <form action="{{ route('categories.posts.reviews.destroy', [$category->id, $post->id, $review->id]) }}"
                                   method="POST" class="d-inline"
                                   onsubmit="return confirm('Bạn có chắc chắn muốn xoá nhận xét này?')">
@@ -70,6 +75,7 @@
                                     Xoá
                                 </button>
                             </form>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

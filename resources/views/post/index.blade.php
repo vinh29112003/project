@@ -108,6 +108,7 @@
 
                             {{-- Sửa (nếu muốn dùng) --}}
 
+                            @can('update', $post)
                             <form
                                 action="{{ route('categories.posts.edit', ['category' => $post->category_id, 'post' => $post->id]) }}"
                                 method="GET" class="d-inline">
@@ -115,10 +116,12 @@
                                     Sửa
                                 </button>
                             </form>
+                            @endcan
 
+                            {{-- Xem (nếu muốn dùng) --}}
 
                             {{-- Xoá (nếu muốn dùng) --}}
-
+                            @can('delete', $post)
                             <form action="{{ route('categories.posts.destroy', ['category' => $post->category_id, 'post' => $post->id])
                                  }}" method="POST" class="d-inline"
                                 onsubmit="return confirm('Bạn có chắc muốn xoá bài viết này?');">
@@ -128,7 +131,7 @@
                                     Xoá
                                 </button>
                             </form>
-
+                            @endcan
                         </td>
                     </tr>
                 @endforeach
