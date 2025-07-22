@@ -52,7 +52,7 @@ class ReviewController
             'comment' => $request->comment,
         ]);
 
-        return redirect()->route('categories.posts.reviews.index', [
+        return redirect()->route('web.categories.posts.reviews.index', [
             'category' => $id_category,
             'post' => $post->id,
         ])->with('success', 'Đánh giá đã được gửi thành công.');
@@ -94,7 +94,7 @@ class ReviewController
         $review->comment = $validated['comment'];
         $review->save();
 
-        return redirect()->route('categories.posts.reviews.index', [$category->id, $post->id])
+        return redirect()->route('web.categories.posts.reviews.index', [$category->id, $post->id])
             ->with('success', 'Cập nhật nhận xét thành công.');
     }
 
@@ -104,7 +104,7 @@ class ReviewController
     public function destroy(Category $category, Post $post, Review $review)
     {
         $review->delete();
-        return redirect()->route('categories.posts.reviews.index', [$category->id, $post->id])
+        return redirect()->route('web.categories.posts.reviews.index', [$category->id, $post->id])
             ->with('success', 'Xoá nhận xét thành công.');
     }
 }

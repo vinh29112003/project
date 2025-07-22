@@ -25,7 +25,7 @@
     @endif
 
     {{-- Form chỉnh sửa nhận xét --}}
-    <form action="{{ route('categories.posts.reviews.update', [$category->id, $post->id, $review->id]) }}" method="POST">
+    <form action="{{ route('web.categories.posts.reviews.update', [$category->id, $post->id, $review->id]) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -35,7 +35,7 @@
         </div>
 
         <div class="d-flex justify-content-between">
-            <a href="{{ route('categories.posts.reviews.index', [$category->id, $post->id]) }}" class="btn btn-secondary">
+            <a href="{{ route('web.categories.posts.reviews.index', [$category->id, $post->id]) }}" class="btn btn-secondary">
                 ← Quay lại
             </a>
             <button type="submit" class="btn btn-success">Cập nhật</button>

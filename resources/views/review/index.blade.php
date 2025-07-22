@@ -26,7 +26,7 @@
 
     {{-- Nút thêm nhận xét --}}
     <div class="mb-3 text-end">
-        <a href="{{ route('categories.posts.reviews.create', [$category->id, $post->id]) }}"
+        <a href="{{ route('web.categories.posts.reviews.create', [$category->id, $post->id]) }}"
            class="btn btn-primary">
             + Thêm nhận xét
         </a>
@@ -56,7 +56,7 @@
                         <td>
                             {{-- Sửa --}}
                             @can('update', $review)
-                            <a href="{{ route('categories.posts.reviews.edit', [$category->id, $post->id, $review->id]) }}"
+                            <a href="{{ route('web.categories.posts.reviews.edit', [$category->id, $post->id, $review->id]) }}"
                                class="btn btn-sm btn-warning me-1">
                                 Sửa
                             </a>
@@ -66,7 +66,7 @@
 
                             {{-- Xoá --}}
                             @can('delete', $review)
-                            <form action="{{ route('categories.posts.reviews.destroy', [$category->id, $post->id, $review->id]) }}"
+                            <form action="{{ route('web.categories.posts.reviews.destroy', [$category->id, $post->id, $review->id]) }}"
                                   method="POST" class="d-inline"
                                   onsubmit="return confirm('Bạn có chắc chắn muốn xoá nhận xét này?')">
                                 @csrf

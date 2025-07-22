@@ -12,7 +12,7 @@
     <div class="container mt-5">
         <h2>Chỉnh sửa bài viết</h2>
 
-        <form action="{{ route('categories.posts.update', ['category' => $post->category_id, 'post' => $post->id]) }}"
+        <form action="{{ route('web.categories.posts.update', ['category' => $post->category_id, 'post' => $post->id]) }}"
             method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -66,7 +66,7 @@
 
             <!-- Nút -->
             <button type="submit" class="btn btn-primary">Cập nhật bài viết</button>
-            <a href="{{ route('categories.posts.index', $post->category_id) }}" class="btn btn-secondary">Hủy</a>
+            <a href="{{ route('web.categories.posts.index', $post->category_id) }}" class="btn btn-secondary">Hủy</a>
         </form>
     </div>
 </body>

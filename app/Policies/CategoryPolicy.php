@@ -10,7 +10,7 @@ class CategoryPolicy
     /**
      * Xem danh sách tất cả category
      */
-    public function viewAny(User $user): bool
+    public function viewAny(?User $user): bool
     {
         return true; // Mọi người dùng đều được xem
     }

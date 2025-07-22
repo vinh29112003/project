@@ -67,7 +67,7 @@
     <h2>Danh sách Bài viết</h2>
 
     <div class="table-container">
-        <a href="{{ route('categories.posts.create', ['category' => $category->id]) }}" class="btn btn-success"
+        <a href="{{ route('web.categories.posts.create', ['category' => $category->id]) }}" class="btn btn-success"
             id="Add">
             + Thêm bài viết
         </a>
@@ -99,7 +99,7 @@
                         <td>{{ $post->reviews->count() }}</td>
                         <td>
                             {{-- Xem & Gửi nhận xét --}}
-                            <form action="{{ route('categories.posts.reviews.index', [$post->category_id, $post->id]) }}"
+                            <form action="{{ route('web.categories.posts.reviews.index', [$post->category_id, $post->id]) }}"
                                 method="GET" class="d-inline">
                                 <button type="submit" class="btn btn-sm btn-outline-primary mb-1">
                                     Nhận xét
@@ -110,7 +110,7 @@
 
                             @can('update', $post)
                             <form
-                                action="{{ route('categories.posts.edit', ['category' => $post->category_id, 'post' => $post->id]) }}"
+                                action="{{ route('web.categories.posts.edit', ['category' => $post->category_id, 'post' => $post->id]) }}"
                                 method="GET" class="d-inline">
                                 <button type="submit" class="btn btn-sm btn-outline-success mb-1">
                                     Sửa
@@ -122,7 +122,7 @@
 
                             {{-- Xoá (nếu muốn dùng) --}}
                             @can('delete', $post)
-                            <form action="{{ route('categories.posts.destroy', ['category' => $post->category_id, 'post' => $post->id])
+                            <form action="{{ route('web.categories.posts.destroy', ['category' => $post->category_id, 'post' => $post->id])
                                  }}" method="POST" class="d-inline"
                                 onsubmit="return confirm('Bạn có chắc muốn xoá bài viết này?');">
                                 @csrf

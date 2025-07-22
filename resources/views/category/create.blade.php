@@ -76,7 +76,7 @@
         </div>
     @endif
 
-    <form action="{{route('categories.store')}}" method="POST">
+    <form action="{{route('web.categories.store')}}" method="POST">
         @csrf
         <label for="name">Tên danh mục</label>
         <input type="text" name="name" id="name"  required>

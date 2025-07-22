@@ -14,7 +14,7 @@
 
         @auth
             @if(isset($category) && isset($post))
-                <form method="POST" action="{{ route('categories.posts.reviews.store', [$category->id, $post->id]) }}" class="bg-white p-4 shadow rounded">
+                <form method="POST" action="{{ route('web.categories.posts.reviews.store', [$category->id, $post->id]) }}" class="bg-white p-4 shadow rounded">
                     @csrf
 
                     <div class="mb-3">

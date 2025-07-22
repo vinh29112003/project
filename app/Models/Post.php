@@ -10,7 +10,7 @@ class Post extends Model
         'title',
         'contents',
         'category_id',
-        'status_id',    
+        'status_id',
         'image_path',
         'user_id',
     ];
@@ -25,8 +25,12 @@ class Post extends Model
         return $this->belongsTo(Status::class);
     }
 
-     public function reviews()
+    public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

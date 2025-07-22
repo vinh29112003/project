@@ -73,7 +73,7 @@ class PostController extends Controller
         ]);
 
 
-        return redirect()->route('categories.posts.index', ['category' => $category->id])
+        return redirect()->route('web.categories.posts.index', ['category' => $category->id])
             ->with('success', 'Bài viết đã được thêm thành công.');
     }
 
@@ -114,7 +114,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect()->route('categories.posts.index', $categoryId)->with('success', 'Cập nhật thành công!');
+        return redirect()->route('web.categories.posts.index', $categoryId)->with('success', 'Cập nhật thành công!');
     }
 
 
@@ -125,7 +125,7 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return redirect()->route('categories.posts.index', ['category' => $category->id])
+        return redirect()->route('web.categories.posts.index', ['category' => $category->id])
             ->with('success', 'Bài viết đã xoá thành công.');
     }
 }

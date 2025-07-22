@@ -11,7 +11,7 @@
     <div class="container mt-5">
         <h2>Thêm bài viết</h2>
 
-        <form action="{{ route('categories.posts.store', ['category' => $category->id]) }}" method="POST"
+        <form action="{{ route('web.categories.posts.store', ['category' => $category->id]) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             @method('POST')
@@ -59,7 +59,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Thêm bài viết</button>
-            <a href="{{ route('categories.posts.index', ['category' => $category->id]) }}"
+            <a href="{{ route('web.categories.posts.index', ['category' => $category->id]) }}"
                 class="btn btn-secondary">Hủy</a>
 
             @if ($errors->any())

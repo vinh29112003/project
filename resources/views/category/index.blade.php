@@ -58,7 +58,7 @@
     <h2>Danh sách danh mục</h2>
 
     <div class="table-container">
-        <a href="{{ route('categories.create') }}" class="btn btn-success" id="Add">
+        <a href="{{ route('web.categories.create') }}" class="btn btn-success" id="Add">
             + Thêm danh mục
         </a>
 
@@ -82,7 +82,7 @@
                         <td>
                             {{-- Xem bài viết --}}
                             
-                                <form action="{{ route('categories.posts.index', $category->id) }}" method="GET"
+                                <form action="{{ route('web.categories.posts.index', $category->id) }}" method="GET"
                                     class="d-inline">
                                     <button type="submit" class="btn btn-outline-info btn-sm mb-1">
                                         <i class="bi bi-eye"></i> Xem bài viết
@@ -92,7 +92,7 @@
 
                             {{-- Sửa --}}
                             @can('update', $category)
-                                <form action="{{ route('categories.edit', $category->id) }}" method="GET" class="d-inline">
+                                <form action="{{ route('web.categories.edit', $category->id) }}" method="GET" class="d-inline">
                                     <button type="submit" class="btn btn-warning btn-sm mb-1">
                                         <i class="bi bi-pencil-square"></i> Sửa
                                     </button>
@@ -101,7 +101,7 @@
 
                             {{-- Xoá --}}
                             @can('delete', $category)
-                                <form action="{{ route('categories.destroy', $category) }}" method="POST" class="d-inline"
+                                <form action="{{ route('web.categories.destroy', $category) }}" method="POST" class="d-inline"
                                     onsubmit="return confirm('Bạn có chắc chắn muốn xoá danh mục này?')">
                                     @csrf
                                     @method('DELETE')

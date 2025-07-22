@@ -9,7 +9,7 @@
 <div class="container mt-5">
     <h2>Edit Category</h2>
 
-    <form action="{{route('categories.update',[$category->id])}}" method="POST">
+    <form action="{{route('web.categories.update',[$category->id])}}" method="POST">
        @csrf
         @method('PUT') <!-- Laravel method spoofing for PUT request -->
         <div class="mb-3">
@@ -36,7 +36,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Update Category</button>
-        <a href="{{ route('categories.index') }}" class="btn btn-secondary">Cancel</a>
+        <a href="{{ route('web.categories.index') }}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 </body>

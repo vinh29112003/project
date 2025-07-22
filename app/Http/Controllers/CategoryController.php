@@ -50,7 +50,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $category = Category::create(['name' => $request->name, 'description' => $request->description]);
-        return redirect()->route('categories.index')->with('success', 'Category created successfully!');
+        return redirect()->route('web.categories.index')->with('success', 'Category created successfully!');
     }
 
     /**
@@ -67,7 +67,7 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         $category = Category::findOrFail($id);
-        return view('category.edit', compact('category'));
+        return view('web.category.edit', compact('category'));
     }
 
     /**
@@ -80,7 +80,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'description' => $request->description,
         ]);
-        return redirect()->route('categories.index')->with('success', 'Danh mục đã được cập nhật thành công.');
+        return redirect()->route('web.categories.index')->with('success', 'Danh mục đã được cập nhật thành công.');
     }
 
     /**
@@ -90,7 +90,7 @@ class CategoryController extends Controller
     {
 
         $category->delete();
-        return redirect()->route('categories.index')
+        return redirect()->route('web.categories.index')
             ->with('success', 'Danh mục đã xoá thành công.');
     }
 }

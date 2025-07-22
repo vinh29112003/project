@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostRequest extends FormRequest
+class AuthAPIRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,12 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'contents' => 'required|string',
-            'category_id' => 'required|exists:categories,id',
-            'status_id' => 'required|exists:statuses,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
-
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username',
+            'password' => 'required|string|min:8|confirmed', // Ensure password confirmation
+            'phone_number' => 'required|string|max:15|unique:users,phone_number',
+            'email' => 'required|email|max:255|unique:users,email',
+            
         ];
     }
 }
