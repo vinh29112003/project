@@ -65,10 +65,11 @@ class PostController extends Controller
 
         $post = Post::create([
             'title' => $request->title,
-            'content' => $request->content,
+            'contents' => $request->contents,
             'category_id' => $request->category_id,
             'status_id' => $request->status_id,
             'image_path' => $imagePath,
+            'user_id' => Auth::id(), // Lưu ID người dùng hiện tại
         ]);
 
 
@@ -100,9 +101,10 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($postId);
         $post->title = $request->title;
-        $post->content = $request->content;
+        $post->contents = $request->contents;
         $post->category_id = $request->category_id;
         $post->status_id = $request->status_id;
+        $post->user_id = Auth::id(); // Cập nhật ID người dùng hiện tại
 
         // Cập nhật ảnh nếu có
         if ($request->hasFile('image')) {

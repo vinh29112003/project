@@ -36,7 +36,7 @@
             <!-- Nội dung -->
             <div class="mb-3">
                 <label for="content" class="form-label">Nội dung:</label>
-                <textarea id="content" name="content" class="form-control" rows="6" required>{{ $post->content }}</textarea>
+                <textarea id="content" name="contents" class="form-control" rows="6" required>{{ $post->contents }}</textarea>
             </div>
 
             <!-- Danh mục -->

@@ -93,7 +93,7 @@
                             <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}">
                         </td>
                         <td>{{ $post->title }}</td>
-                        <td>{{ Str::limit($post->content, 50) }}</td>
+                        <td>{{ Str::limit($post->contents, 50) }}</td>
                         <td>{{ $post->category->name ?? 'Không có' }}</td>
                         <td>{{ $post->status->name ?? 'Không có' }}</td>
                         <td>{{ $post->reviews->count() }}</td>

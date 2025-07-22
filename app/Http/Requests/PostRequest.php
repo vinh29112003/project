@@ -23,7 +23,7 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'content' => 'required|string',
+            'contents' => 'required|string',
             'category_id' => 'required|exists:categories,id',
             'status_id' => 'required|exists:statuses,id',
             'image'=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Added image validation rule

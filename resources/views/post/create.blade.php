@@ -24,7 +24,7 @@
 
             <div class="mb-3">
                 <label for="content" class="form-label">Nội dung:</label>
-                <textarea id="content" name="content" class="form-control" rows="6"
+                <textarea id="content" name="contents" class="form-control" rows="6"
                     placeholder="Nhập nội dung bài viết"></textarea>
             </div>
 

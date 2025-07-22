@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function __construct()
     
     {
-        $this->middleware('permission:edit post');
+        // $this->middleware('permission:edit post');
         $this->middleware('auth')->except(['index', 'show']);
 
         // Sử dụng Auth::check() thay cho auth()->check()
